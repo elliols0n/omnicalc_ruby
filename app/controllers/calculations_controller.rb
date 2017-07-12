@@ -118,7 +118,12 @@ class CalculationsController < ApplicationController
 
     @standard_deviation = Math.sqrt(@variance)
 
-    @mode = "Replace this string with your answer."
+    def most_frequent
+      freq = @numbers.inject(Hash.new(0)) { |hash,value| hash[value] += 1; hash }
+      @numbers.max_by { |value| freq[value] }
+    end 
+    
+    @mode = most_frequent
 
     # ================================================================================
     # Your code goes above.

@@ -15,7 +15,7 @@ class CalculationsController < ApplicationController
 
     @character_count_with_spaces = @text.length
 
-    @character_count_without_spaces = @text.gsub(/\s+/,"").length
+    @character_count_without_spaces = @text.gsub(/\s+/,"").size
 
     @occurrences = @text.split.count(@special_word)
 

@@ -100,9 +100,23 @@ class CalculationsController < ApplicationController
 
     @mean = @sum / @count
 
-    @variance = "Replace this string with your answer."
+    def variance
+    	individual_variants = [] # empty array
+    
+    	@numbers.each do |number|
+    		variant = (number - @mean) ** 2
+    		individual_variants.push(variant)
+    	end
+    	individual_variants.sum
+    
+      # Way to one-line this method:
+      #
+      # @numbers.sum { |number| (number - @mean) ** 2 }
+    end
 
-    @standard_deviation = "Replace this string with your answer."
+    @variance = variance / @count
+
+    @standard_deviation = Math.sqrt(@variance)
 
     @mode = "Replace this string with your answer."
 
